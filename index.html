@@ -1,8 +1,28 @@
 <html>
 <head>
   <title>Coffee Coder</title>
+
+  <style type="text/css">
+    body {
+      background-color: #222;
+      color: #EEE;
+    }
+  </style>
 </head>
 <body>
+
+  <script type="text/javascript">
+    window.resize(updateSize);
+    function updateSize() {
+      canavs.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    var canvas = document.createElement('canvas');
+    canavs.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    document.body.append(canvas);
+  </script>
 
 </body>
 </html>
