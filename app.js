@@ -45,9 +45,9 @@ stage.addChild( border );
 var queue = new createjs.LoadQueue(false);
 var manifest = [
   // gfx
-  {id: 'bg', src: 'assets/bg_sm_mod.jpg'},
-  {id: 'mug', src: 'assets/mug.jpg'},
-  {id: 'screen', src: 'assets/screen.jpg'},
+  {id: 'bg', src: 'assets/bg_sm.jpg'},
+  //{id: 'mug', src: 'assets/mug.jpg'},
+  //{id: 'screen', src: 'assets/screen.jpg'},
   {id: 'code'
   , src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js'
   , type: createjs.LoadQueue.TEXT},
