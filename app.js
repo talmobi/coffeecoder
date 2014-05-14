@@ -21,8 +21,8 @@ var p = document.createElement('pre');
 p.style.position = 'absolute';
 p.style.top = 0;
 p.style.left = 0;
-var text = "bash>"
-var del = ' |';
+var text = "Mollie@MOLLIE-PC ~/workspace/coffeecoder (master) \n$ "
+var del = ' _';
 var delToggle = false;
 p.innerHTML = text;
 document.body.appendChild(p);
@@ -56,6 +56,20 @@ var manifest = [
   {id: 'sndType2', src: 'assets/sfx/type2.mp3'},
   {id: 'sndType3', src: 'assets/sfx/type3.mp3'},
   {id: 'sndType4', src: 'assets/sfx/type4.mp3'},
+  {id: 'sndType5', src: 'assets/sfx/type5.mp3'},
+  {id: 'sndType6', src: 'assets/sfx/type6.mp3'},
+  {id: 'sndType7', src: 'assets/sfx/type7.mp3'},
+  {id: 'sndType8', src: 'assets/sfx/type8.mp3'},
+  {id: 'sndType9', src: 'assets/sfx/type9.mp3'},
+  {id: 'sndType10', src: 'assets/sfx/type10.mp3'},
+  {id: 'sndType11', src: 'assets/sfx/type11.mp3'},
+  {id: 'sndType12', src: 'assets/sfx/type12.mp3'},
+  {id: 'sndType13', src: 'assets/sfx/type13.mp3'},
+  {id: 'sndType14', src: 'assets/sfx/type14.mp3'},
+  {id: 'sndType15', src: 'assets/sfx/type15.mp3'},
+
+  {id: 'sndTab1', src: 'assets/sfx/tab1.mp3'},
+  {id: 'sndTab2', src: 'assets/sfx/tab2.mp3'},
 
   {id: 'sndEnter1', src: 'assets/sfx/enter1.mp3'},
   {id: 'sndEnter2', src: 'assets/sfx/enter2.mp3'},
@@ -69,7 +83,7 @@ var manifest = [
   {id: 'sndSpace5', src: 'assets/sfx/space5.mp3'},
 
   {id: 'sndShift', src: 'assets/sfx/shift.mp3'},
-  {id: 'sndCtrl', src: 'assets/sfx/ctrl.mp3'},
+  {id: 'sndCtrl', src: 'assets/sfx/ctrl.mp3'}
 
 ];
 queue.installPlugin(createjs.Sound); // install sound plugin
@@ -110,6 +124,7 @@ function init() {
   });
 
   var codeString = queue.getResult('code');
+  codeString = '\n\n' + codeString;
   var strlen = codeString.length;
   var count = 0;
   var lines = 0;
@@ -126,7 +141,18 @@ function init() {
     'sndType1',
     'sndType2',
     'sndType3',
-    'sndType4'
+    'sndType4',
+    'sndType5',
+    'sndType6',
+    'sndType7',
+    'sndType8',
+    'sndType9',
+    'sndType10',
+    'sndType11',
+    'sndType12',
+    'sndType13',
+    'sndType14',
+    'sndType15'
   ];
 
   var sndSpace = [
@@ -137,18 +163,23 @@ function init() {
     'sndSpace5'
   ];
 
-  var sndShift = [
+  var sndMod = [
     'sndShift'
+    //'sndCtrl'
   ];
 
-  var sndCtrl = [
-    'sndCtrl'
+  var sndTab = [
+    'sndTab1',
+    'sndTab2'
   ];
 
-  var delay = 2;
-  var tmpDelay = 220;
+
+  var delay = 3;
+  var tmpDelay = 160;
   var ticks = 0;
-  var l = ''; // last char
+  var l = '\n'; // last char
+  var first = true;
+  var shiftMatch = /[A-Z&\/^)();:\-_\?!@$=*\"%#£€]/;
 
   function parseCode() {
     ticks++;
@@ -162,7 +193,8 @@ function init() {
 
     if (count < strlen) {
       var c = codeString[count++];
-      if (c == '\n' && l == '\n') tmpDelay = 25; 
+      if (c == '\n' && l == '\n') tmpDelay = 25;
+      if (c == '\n' && l == '}') tmpDelay = 55;
       text += c;
       if (c.match(/[\n]/)) {
         lines++;
@@ -177,10 +209,12 @@ function init() {
         if (c == ' ') {
           tmpDelay = 2;
           createjs.Sound.play( sndSpace[Math.random() * sndSpace.length | 0] );
+        } if (c == '\t') {
+          createjs.Sound.play( sndTab[Math.random() * sndTab.length | 0] );
         } else {
           // play shift if upper case and last wasn't upper case
-          if (c.match(/[A-Z]/) && !l.match(/[A-Z]/)) {
-            createjs.Sound.play( sndShift[Math.random() * sndShift.length | 0] );
+          if (c.match(shiftMatch) && !l.match(shiftMatch)) {
+            createjs.Sound.play( sndMod[Math.random() * sndMod.length | 0] );
           }
 
 
