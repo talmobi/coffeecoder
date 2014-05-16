@@ -122,8 +122,8 @@ function init() {
 
   // play soft humming sound on loop
   var sndHum = 'sndHum';
-  createjs.Sound.play(sndHum);
-  //createjs.Sound.play(sndHum, {loop: -1, delay: 0, volume: .5});
+  //createjs.Sound.play(sndHum);
+  createjs.Sound.play(sndHum, {loop: -1, delay: 0, volume: .4});
   //createjs.Sound.play(sndHum, {loop: -1, delay: 6000, volume: .4});
 
   var codeString = "" + queue.getResult('code1');
@@ -184,9 +184,9 @@ function init() {
       l = c;
     } // if (count < strlen)
 
-    if (tmpDelay > 0) {
+    /*if (tmpDelay > 0) {
       createjs.Sound.play(sndHum);
-    }
+    }*/
   }
 
   function updatePositions() {
