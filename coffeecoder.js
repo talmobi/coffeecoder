@@ -16,7 +16,8 @@ var manifest = [
   //{id: 'mug', src: 'assets/mug.jpg'},
   //{id: 'screen', src: 'assets/screen.jpg'},
   {id: 'code1'
-  , src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js'
+  , src: 'assets/jquery_2.1.1_jquery.js'
+  // , src: 'http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js'
   , type: createjs.LoadQueue.TEXT},
 
   // sfx
